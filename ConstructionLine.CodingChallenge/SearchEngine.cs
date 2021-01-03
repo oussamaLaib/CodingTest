@@ -6,30 +6,19 @@ namespace ConstructionLine.CodingChallenge
     {
         private readonly List<Shirt> _shirts;
 
+        List<Shirt> ShirtsFound = new List<Shirt> { };
+        List<SizeCount> SzCounts = new List<SizeCount> { };
+        List<ColorCount> ClCounts = new List<ColorCount> { };
+
+        Dictionary<string, int> ColorsIndex = new Dictionary<string, int>();
+        Dictionary<string, int> SizesIndex = new Dictionary<string, int>();
+
         public SearchEngine(List<Shirt> shirts)
         {
             _shirts = shirts;
 
             // TODO: data preparation and initialisation of additional data structures to improve performance goes here.
-            //Shirts = new string[_shirts.Count, 2];
-            //int i = 0;
-            //foreach (var s in shirts)
-            //{
-            //    Shirts[i, 0] = s.Size.ToString();
-            //    Shirts[i, 1] = s.Color.ToString();
-            //}
 
-        }
-
-
-
-        public SearchResults Search(SearchOptions options)
-        {
-            // TODO: search logic goes here.
-            
-            List<Shirt> ShirtsFound = new List<Shirt> { };
-            List<SizeCount> SzCounts = new List<SizeCount> { };
-            List<ColorCount> ClCounts = new List<ColorCount> { };
 
             foreach (var color in Color.All)
             {
@@ -41,6 +30,34 @@ namespace ConstructionLine.CodingChallenge
                 SzCounts.Add(new SizeCount() { Size = size, Count = 0 });
             }
 
+
+
+            // This initialization code for when using the second search method
+            //
+            //int indx = 0;
+            //foreach (var color in Color.All)
+            //{
+            //    ClCounts.Add(new ColorCount() { Color = color, Count = 0 });
+            //    ColorsIndex.Add(color.Name, indx);
+            //    indx++;
+            //}
+
+            //indx = 0;
+            //foreach (var size in Size.All)
+            //{
+            //    SzCounts.Add(new SizeCount() { Size = size, Count = 0 });
+            //    SizesIndex.Add(size.Name, indx);
+            //    indx++;
+            //}
+
+        }
+
+
+
+            public SearchResults Search(SearchOptions options)
+        {
+            // TODO: search logic goes here.
+            
 
             if (options.Sizes.Count != 0)
             {
@@ -100,29 +117,6 @@ namespace ConstructionLine.CodingChallenge
         public SearchResults Search_2(SearchOptions options)
         {
             //TODO: search logic goes here.
-
-            List<Shirt> ShirtsFound = new List<Shirt> { };
-            List<SizeCount> SzCounts = new List<SizeCount> { };
-            List<ColorCount> ClCounts = new List<ColorCount> { };
-
-            Dictionary<string, int> ColorsIndex = new Dictionary<string, int>();
-            Dictionary<string, int> SizesIndex = new Dictionary<string, int>();
-
-            int indx = 0;
-            foreach (var color in Color.All)
-            {
-                ClCounts.Add(new ColorCount() { Color = color, Count = 0 });
-                ColorsIndex.Add(color.Name, indx);
-                indx++;
-            }
-
-            indx = 0;
-            foreach (var size in Size.All)
-            {
-                SzCounts.Add(new SizeCount() { Size = size, Count = 0 });
-                SizesIndex.Add(size.Name, indx);
-                indx++;
-            }
 
 
 
